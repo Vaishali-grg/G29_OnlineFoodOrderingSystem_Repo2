@@ -1,0 +1,132 @@
+<!-- recipes/templates/recipe_form.html -->
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title }}</title>
+</head>
+<body>
+    <h1>{{ title }}</h1>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
+
+    <a href="{% url 'recipe_list' %}">Back to Recipe List</a>
+</body>
+</html> -->
+<!-- recipes/templates/recipe_form.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title }}</title>
+    <style>
+        :root {
+            --primary-color: #ff4d4f;
+            --light-bg: #f9f9fb;
+            --dark-text: #2c2c2c;
+            --card-shadow: rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light-bg);
+        }
+
+        .container {
+            max-width: 1200px;
+            background: #fff;
+            padding: 40px 30px;
+            border-radius: 18px;
+            margin: 50px auto;
+            box-shadow: 0 10px 25px var(--card-shadow);
+            animation: fadeIn 0.5s ease;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        form p {
+            margin-bottom: 18px;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 12px 15px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        input:focus, textarea:focus, select:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 5px var(--primary-color);
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 12px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        button:hover {
+            background-color: #e84142;
+            transform: translateY(-2px);
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 25px;
+            text-align: center;
+            color: #333;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--primary-color);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{{ title }}</h1>
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">💾 Save</button>
+        </form>
+
+        <a href="{% url 'recipe_list' %}">← Back to Recipe List</a>
+    </div>
+</body>
+</html>

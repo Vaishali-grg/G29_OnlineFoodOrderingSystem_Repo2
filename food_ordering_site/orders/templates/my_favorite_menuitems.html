@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Favorite Dishes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #ff6600;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 20px;
+        }
+
+        .menu-item {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .menu-item img {
+            width: 25%;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .menu-text {
+            flex-grow: 1;
+            padding: 20px;
+        }
+
+        .menu-title {
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .menu-price {
+            color: #666;
+        }
+
+        .add-to-cart {
+            background-color: #ff6600;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 14px;
+            border-radius: 5px;
+            position: absolute;
+            bottom: 10px;
+            right: 20px;
+        }
+
+        .back-buttons {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            background-color: #e5e5e5;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: none;
+            color: black;
+        }
+
+        .button:hover {
+            background-color: #d4d4d4;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>My Favorite Menu Items</h1>
+</div>
+
+<div class="container">
+    {% if favorite_items %}
+        <div class="menu">
+            {% for menu in favorite_items %}
+            <div class="menu-item">
+                <div class="menu-text">
+                    <p class="menu-title">{{ menu.name }}</p>
+                    <p class="menu-price">₹{{ menu.price }}</p>
+                    <p>{{ menu.description }}</p>
+                    <p><strong>Estimated Wait Time:</strong> {{ menu.preparation_time }} min</p>
+
+                    <form method="post" action="{% url 'add_to_cart' menu.id %}">
+                        {% csrf_token %}
+                        <input type="number" name="quantity" value="1" min="1">
+                        <button type="submit" class="add-to-cart">Add to Cart</button>
+                    </form>
+                </div>
+                <img src="{{ menu.image_url }}" alt="{{ menu.name }} Image" onerror="this.onerror=null; this.src='default_image.jpg';">
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>You haven’t favorited any menu items yet.</p>
+    {% endif %}
+
+    <div class="back-buttons">
+        <a href="{% url 'outlet_list' %}" class="button">Back to Outlets</a>
+        <a href="{% url 'view_cart' %}" class="button">View Cart</a>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Manager Dashboard{% endblock %}
+
+{% block content %}
+   
+    <button class="signup"><a style="color: white;" href="{% url 'create_outlet' %}">Cretate outlet</a></button>   
+    <button class="signup"><a style="color: white;" href="{% url 'manage_outlets' %}">manage outlets</a></button>
+    <button class="signup"><a style="color: white;" href="{% url 'profile' %}"><i class="fa-solid fa-circle-user"></i> {{user.username}}</a></button>
+    <button class="signup"><a style="color: white;" href="{% url 'logout' %}">Logout</a></button>
+
+
+
+{% endblock %}
+
+
+
+{% block content1 %}
+<section class="tuckshop-showcase">
+    <h2 class="tuckshop-title">
+      <a href="#" class="tuckshop-btn">NEW</a> Need Supplies on the Go?
+    </h2>
+    <p class="tuckshop-subtext">
+      Out of pens, need quick prints, or forgot your notebook? Our <strong>Tuck Shop Mini-App</strong> is here to save the day!
+    </p>
+  
+    <div class="tuckshop-cards">
+      <!-- Card 1 -->
+      <div class="tuckshop-card">
+        <img src="https://i.ytimg.com/vi/RsLyfgVKn7k/maxresdefault.jpg" alt="Stationery Combo">
+        <h3>Stationery kit</h3>
+        <p>Pens, pencils, erasers, and scale—everything in one kit.</p>
+      </div>
+  
+      
+  
+      
+  
+      <!-- Card 5 -->
+      <div class="tuckshop-card">
+        <img src="https://cdn11.bigcommerce.com/s-971xibeh/images/stencil/1280x1280/products/2079/3001/L301-3qRight-sm__92913.1481479072.png?c=2" alt="Photocopy">
+        <h3>Photocopy Center</h3>
+        <p>Fast B/W or color photocopies for notes, ID cards, etc.</p>
+      </div>
+  
+      <!-- Card 6 -->
+      <div class="tuckshop-card">
+        <img src="https://images.freeimages.com/images/large-previews/ea3/multi-color-paper-1156624.jpg" alt="Office Tools">
+        <h3>chartpaper</h3>
+        <p>Diffrent color of chart papers available.</p>
+      </div>
+    </div>
+  
+    <a href="{% url 'store_material_type_list' %}" class="tuckshop-btn">Browse Tuck Shop</a>
+  </section>
+{% endblock %}
+   

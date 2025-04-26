@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Menu Item</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f9fafc;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .confirm-box {
+            background: #ffffff;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+        }
+
+        h2 {
+            color: #d9534f;
+            margin-bottom: 20px;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        button {
+            background-color: #d9534f;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-right: 15px;
+        }
+
+        button:hover {
+            background-color: #c9302c;
+        }
+
+        .cancel-link {
+            text-decoration: none;
+            color: #007bff;
+            font-size: 16px;
+        }
+
+        .cancel-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="confirm-box">
+        <h2>Are you sure you want to delete "{{ menu.name }}"?</h2>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit">Yes, delete</button>
+            <a class="cancel-link" href="{% url 'manage_menus' outlet_id %}">Cancel</a>
+        </form>
+    </div>
+</body>
+</html>

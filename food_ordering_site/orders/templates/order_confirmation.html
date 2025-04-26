@@ -1,0 +1,132 @@
+<!-- order_confirmation.html -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation</title>
+</head>
+<body>
+    <h1>Order Confirmation</h1>
+    <p>Thank you for your order!</p>
+    <p>Your order ID is: <strong>{{ order.id }}</strong></p>
+    <p>Total Price: ${{ order.total_price }}</p>
+    <h2>Order Details:</h2>
+    <ul>
+        {% for item in order.items.all %}
+            <li>
+                {{ item.quantity }} x {{ item.menu_item.name }} - ${{ item.menu_item.price }}
+            </li>
+        {% empty %}
+            <li>No items in this order.</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'outlet_list' %}">Continue Shopping</a>
+</body>
+</html> -->
+<!-- templates/order_confirmation.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.05);
+        }
+
+        h1 {
+            text-align: center;
+            color: #28a745;
+        }
+
+        p {
+            font-size: 1.1rem;
+            color: #333;
+            margin: 10px 0;
+        }
+
+        strong {
+            color: #000;
+        }
+
+        h2 {
+            margin-top: 30px;
+            color: #333;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #f8f9fa;
+            margin: 10px 0;
+            padding: 12px;
+            border-radius: 6px;
+            color: #555;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            text-align: center;
+            color: #007bff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .order-summary {
+            background: #e9f7ef;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .order-summary p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Order Confirmation</h1>
+        <div class="order-summary">
+            <p>Thank you for your order!</p>
+            <p>Your Order ID: <strong>{{ order.id }}</strong></p>
+            <p>Total Price: <strong>${{ order.total_price }}</strong></p>
+        </div>
+
+        <h2>Order Details:</h2>
+        <ul>
+            {% for item in order.items.all %}
+                <li>
+                    {{ item.quantity }} × {{ item.menu_item.name }} — ${{ item.menu_item.price }}
+                </li>
+            {% empty %}
+                <li>No items in this order.</li>
+            {% endfor %}
+        </ul>
+
+        <a href="{% url 'outlet_list' %}">← Continue Shopping</a>
+    </div>
+</body>
+</html>

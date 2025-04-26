@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Order Confirmation</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f6f8;
+      padding: 30px;
+      color: #333;
+    }
+
+    h1 {
+      font-size: 2.2em;
+      margin-bottom: 10px;
+      color: #2c3e50;
+    }
+
+    h2 {
+      font-size: 1.5em;
+      color: #34495e;
+      margin-bottom: 20px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      background-color: #fff;
+      padding: 20px;
+      margin-bottom: 15px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.07);
+    }
+
+    h3 {
+      margin: 0 0 10px 0;
+    }
+
+    img {
+      max-width: 100px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    p {
+      font-size: 1.1em;
+      color: #555;
+      margin-top: 20px;
+    }
+
+    h3.total {
+      font-size: 1.5em;
+      color: #27ae60;
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 30px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    a:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Order Confirmation</h1>
+
+{% if cart %}
+  <h2>Your Order Summary:</h2>
+  <ul>
+    {% for id, item in cart.items %}
+      <li>
+        <h3>{{ item.name }} - ₹{{ item.price }} x {{ item.quantity }}</h3>
+        {% if item.image_url %}
+          <img src="{{ item.image_url }}" alt="{{ item.name }}">
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+
+  <h3 class="total">Total: ₹{{ total_amount }}</h3>
+
+  <p>Your order has been confirmed! Thank you for shopping with us.</p>
+  <a href="{% url 'store_student_material_type_list' %}">Go back to shop</a>
+
+{% else %}
+  <p>Your cart is empty.</p>
+  <a href="{% url 'store_student_material_type_list' %}">Go back to shop</a>
+{% endif %}
+
+</body>
+</html>

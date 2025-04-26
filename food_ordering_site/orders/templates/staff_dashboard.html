@@ -1,0 +1,42 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Staff Dashboard{% endblock %}
+
+{% block content %}
+    <button class="signup"><a style="color: white;" href="{% url 'order_list' %}">Orders</a></button>
+    <button class="signup"><a style="color: white;" href="{% url 'profile' %}"><i class="fa-solid fa-circle-user"></i> {{user.username}}</a></button>
+    <button class="signup"><a style="color: white;" href="{% url 'logout' %}">Logout</a></button>
+{% endblock %}
+
+{% block content1 %}
+<section class="recipe-showcase">
+    <h2 class="recipe-title"><a href="#" class="recipe-btn">NEW</a> Feeling Curious in the Kitchen? </h2>
+    <p class="recipe-subtext">Whether you're waiting for your food or just in the mood to try something yourself — our
+        <strong>Recipe Mini-App</strong> has easy, student-friendly meals ready to explore!
+      </p>
+  
+    <div class="recipe-cards">
+      <div class="recipe-card">
+        <img src="https://tse2.mm.bing.net/th?id=OIP.KTkhsbg6-PTFWGprnAQ0XAHaDt&pid=Api&P=0&h=180" alt="Maggi Tadka">
+        <h3>Maggi Tadka 2.0</h3>
+        <p>Spicy butter garlic twist. Ready in 5 mins!</p>
+      </div>
+  
+      <div class="recipe-card">
+        <img src="https://tse3.mm.bing.net/th?id=OIP.-MJp3pry24-DDt71FAKJ_AHaEK&pid=Api&P=0&h=180" alt="Bread Pizza">
+        <h3>Bread Pizza Bites</h3>
+        <p>No oven needed. Just a pan, cheese, and vibes </p>
+      </div>
+  
+      <div class="recipe-card">
+        <img src="https://tse2.mm.bing.net/th?id=OIP.x59IZwy-5vcDt1BBKCcArwHaFP&pid=Api&P=0&h=180" alt="Oreo Dessert">
+        <h3>Oreo Hostel Mousse</h3>
+        <p>3 ingredients. 0 regrets. Dessert dreams </p>
+      </div>
+    </div>
+  
+    <a href="{% url 'category_list' %}" class="recipe-btn">Explore All Recipes</a>
+  </section>
+
+{% endblock %}

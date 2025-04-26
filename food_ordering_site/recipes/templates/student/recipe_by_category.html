@@ -1,0 +1,137 @@
+
+
+<style>
+  body {
+    background-color: #f5f7fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .container {
+    max-width: 1000px;
+    margin: auto;
+  }
+
+  h2 {
+    text-align: center;
+    font-weight: 700;
+    color: #2c3e50;
+  }
+
+  .text-info {
+    color: #17a2b8 !important;
+  }
+
+  .recipe-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-top: 30px;
+  }
+
+  .recipe-card {
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .recipe-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  }
+
+  .recipe-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  .recipe-content {
+    padding: 20px;
+    flex-grow: 1;
+  }
+
+  .recipe-content h5 {
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #333;
+  }
+
+  .recipe-content p {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 15px;
+  }
+
+  .recipe-content .btn {
+    font-weight: 500;
+    padding: 8px 14px;
+    font-size: 0.9rem;
+    border-radius: 8px;
+    background-color: #17a2b8;
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .recipe-content .btn:hover {
+    background-color: #138496;
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    margin-top: 40px;
+    padding: 10px 18px;
+    font-size: 1rem;
+    border-radius: 8px;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    text-decoration: none;
+  }
+
+  .btn-secondary:hover {
+    background-color: #5a6268;
+    transform: translateY(-1px);
+  }
+
+  .alert-warning {
+    text-align: center;
+    background-color: #fff3cd;
+    color: #856404;
+    padding: 18px;
+    border-radius: 12px;
+    font-weight: 500;
+    margin-top: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+</style>
+
+<div class="container mt-4">
+  <h2 class="mb-4">Recipes in "<span class="text-info">{{ category.name }}</span>"</h2>
+
+  {% if recipes %}
+    <div class="recipe-grid">
+      {% for recipe in recipes %}
+        <div class="recipe-card">
+          <img src="{{ recipe.image_url }}" alt="{{ recipe.title }}">
+          <div class="recipe-content">
+            <h5>{{ recipe.title }}</h5>
+            <p>{{ recipe.description|truncatewords:20 }}</p>
+            <a href="{% url 'student_recipe_detail' recipe.pk %}" class="btn">View Details</a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="alert alert-warning">No recipes found in this category.</div>
+  {% endif %}
+
+  <div style="text-align:center;">
+    <a href="{% url 'student_category_list' %}" class="btn-secondary">← Back to Categories</a>
+  </div>
+</div>

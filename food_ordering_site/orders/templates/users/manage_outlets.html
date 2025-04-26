@@ -1,0 +1,152 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Outlets</title>
+</head>
+<body>
+    <h1>Your Outlets</h1>
+    <a href="{% url 'create_outlet' %}">Create New Outlet</a>
+    <ul>
+        
+        {% for outlet in outlets %}
+        <div class="outlet">
+            <h3>{{ outlet.name }}</h3>
+            <p>{{ outlet.location }}</p>
+            <img src="{{outlet.image_url}}" alt="img">
+
+            <a href="{% url 'manage_menus' outlet.id %}">Manage Menus</a> 
+            <a href="{% url 'edit_outlet' outlet.id %}">Edit</a> 
+            <a href="{% url 'delete_outlet' outlet.id %}">Delete</a>
+        </div>
+        {% empty %}
+            <li>No outlets available.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Outlets</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .create-btn {
+            display: block;
+            width: fit-content;
+            margin: 0 auto 30px;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .create-btn:hover {
+            background-color: #218838;
+        }
+
+        .outlets-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .outlet {
+            background-color: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .outlet h3 {
+            margin: 10px 0;
+            color: #007bff;
+        }
+
+        .outlet p {
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .outlet img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .outlet a {
+            display: inline-block;
+            margin: 5px 8px;
+            padding: 8px 14px;
+            text-decoration: none;
+            color: white;
+            background-color: #007bff;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+
+        .outlet a:hover {
+            background-color: #0056b3;
+        }
+
+        .outlet a:last-child {
+            background-color: #dc3545;
+        }
+
+        .outlet a:last-child:hover {
+            background-color: #c82333;
+        }
+
+        .no-outlets {
+            text-align: center;
+            color: #666;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Your Outlets</h1>
+    <a class="create-btn" href="{% url 'create_outlet' %}">+ Create New Outlet</a>
+
+    {% if outlets %}
+    <div class="outlets-container">
+        {% for outlet in outlets %}
+        <div class="outlet">
+            <img src="{{ outlet.image_url }}" alt="Outlet Image">
+            <h3>{{ outlet.name }}</h3>
+            <p>{{ outlet.location }}</p>
+
+            <a href="{% url 'manage_menus' outlet.id %}">Manage Menus</a> 
+            <a href="{% url 'edit_outlet' outlet.id %}">Edit</a> 
+            <a href="{% url 'delete_outlet' outlet.id %}">Delete</a>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="no-outlets">No outlets available.</div>
+    {% endif %}
+    <a href="{% url 'manager_dashboard' %}">Go Back to Dashboard</a>
+</body>
+</html>

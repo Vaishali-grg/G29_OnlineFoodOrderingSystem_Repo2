@@ -1,0 +1,139 @@
+<!-- place_order.html -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Place Order</title>
+</head>
+<body>
+    <h1>Place Your Order</h1>
+    <h2>Your Cart</h2>
+    <ul>
+        {% for menu_id, item in cart.cart.items %}
+            <li>
+                Menu Item ID: {{ menu_id }} - Quantity: {{ item.quantity }} - Price: ${{ item.price }}
+            </li>
+        {% empty %}
+            <li>Your cart is empty.</li>
+        {% endfor %}
+    </ul>
+    <h2>Total Price: ${{ cart.get_total_price }}</h2>
+    
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Confirm Order</button>
+    </form>
+    <a href="{% url 'view_cart' %}">Back to Cart</a>
+</body>
+</html> --><!-- templates/place_order.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Place Order</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 50px auto;
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.05);
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background: #f1f1f1;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 5px;
+            color: #555;
+        }
+
+        .total {
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: right;
+            margin-top: 1.5rem;
+            color: #000;
+        }
+
+        form {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 1.5rem;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Place Your Order</h1>
+        <h2>Your Cart</h2>
+        <ul>
+            {% for menu_id, item in cart.cart.items %}
+                <li>
+                    <strong>Item ID:</strong> {{ menu_id }} |
+                    <strong>Quantity:</strong> {{ item.quantity }} |
+                    <strong>Price:</strong> ${{ item.price }}
+                </li>
+            {% empty %}
+                <li>Your cart is empty.</li>
+            {% endfor %}
+        </ul>
+        <div class="total">
+            Total Price: ${{ cart.get_total_price }}
+        </div>
+
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit">Confirm Order</button>
+        </form>
+
+        <a href="{% url 'view_cart' %}" class="back-link">← Back to Cart</a>
+    </div>
+</body>
+</html>

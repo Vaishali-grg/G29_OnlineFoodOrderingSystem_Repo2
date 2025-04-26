@@ -1,0 +1,307 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu for {{ outlet.name }}</title>
+</head>
+<body>
+    <h1>Menu for {{ outlet.name }}</h1>
+    <ul>
+        {% for menu in menus %}
+            <li>
+                {{ menu.name }} - {{ menu.description }} - ${{ menu.price }}
+                <form action="{% url 'add_to_cart' menu.id %}" method="post">
+                    {% csrf_token %}
+                    <input type="number" name="quantity" value="1" min="1" />
+                    <button type="submit">Add to Cart</button>
+                </form>
+            </li>
+        {% empty %}
+            <li>No menu items available for this outlet.</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'outlet_list' %}">Back to Outlets</a>
+</body>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu for {{ outlet.name }}</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+
+
+
+
+
+
+
+
+
+
+        .SECTION1 {
+          font-family: Arial, sans-serif;
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          /*  background-color: #f9f9f9; */
+        }
+        .container1 {
+          width: 100%;
+          margin: 0 auto;
+          border-radius: 10px;
+          overflow: hidden;
+          /*  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  */
+        }
+        .header {
+          position: relative;
+        }
+        .header img {
+          width: 100%;
+          height: auto;
+          max-height: 300px;
+        }
+        .content {
+          padding: 20px;
+        }
+        .title {
+          font-size: 38px;
+          font-weight: bold;
+          margin-bottom: 10px;
+        }
+        .details {
+          font-size: 14px;
+          color: #666;
+          margin-bottom: 20px;
+        }
+        .availability {
+          font-size: 16px;
+          color: #333;
+          margin-bottom: 10px;
+        }
+        .location {
+          font-size: 14px;
+          color: #555;
+        }
+        .buttons {
+          display: flex;
+          gap: 10px;
+          margin-top: 20px;
+        }
+        .button {
+          padding: 10px 20px;
+          background-color: #e5e5e5;
+          border: none;
+          border-radius: 5px;
+          font-size: 14px;
+          cursor: pointer;
+        }
+        .button:hover {
+          background-color: #d6d6d6;
+        }
+        .button.primary {
+          background-color: #f5f5f5;
+          color: #333;
+        }
+        .delivery-fee {
+          font-size: 14px;
+          color: green;
+          margin-top: 10px;
+        }
+        .status {
+          font-size: 14px;
+          color: red;
+          margin-top: 5px;
+        }
+    
+    
+        .section2 {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+        .container {
+            padding: 20px;
+        }
+        .container h2{
+            font-size: 32px;
+            text-align: center;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        .container h2::after {
+            content: "";
+            display: block;
+            width: 20%;
+            height: 3px;
+            background-color: orange;
+            margin: auto;
+            margin-top: 5px;
+        }
+        .menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+            gap: 20px;
+        }
+        .menu-item {
+            background-color: white;
+            padding: 0;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+        }
+        .menu-item img {
+            width: 22%;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        .menu-text {
+            flex-grow: 1;
+            padding: 20px;
+        }
+        .menu-title {
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .menu-price {
+            color: #666;
+        }
+        .add-to-cart {
+            background-color: #ff6600;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 14px;
+            border-radius: 5px;
+            position: absolute;
+            bottom: 10px;
+            right: 20px;
+        }
+      </style>
+</head>
+<body>
+
+
+
+
+
+
+
+    <section class="SECTION1">
+        <div class="container1">
+          <div class="header">
+            <img src="{{outlet.image_url}}" alt="Taco Bell Banner">
+
+          </div>
+          <div class="content">
+            <div class="title">{{ outlet.name }}</div>
+            <div class="details">Tasty • Healthy • Fresh</div>
+            <div class="availability">Open From 8:00 AM-11:00 PM</div>
+            <div class="buttons">
+              <button class="button primary">TAKEAWAY</button>
+              <button class="button"> Self Service </button>
+              <button class="button">Group Order</button>
+              <a href="{% url 'my_favorite_menuitems' %}" class="button" style="text-decoration: none;">❤️ Favorites</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="section2">
+        <div class="container">
+            <h2>Selections</h2>
+            <div class="menu">
+                {% for menu in menus %}
+                <div class="menu-item">
+                    <div class="menu-text">
+                        <p class="menu-title">{{ menu.name }}</p>
+                        <p class="menu-price">${{ menu.price }}</p>
+                        <p>{{menu.description}}</p>
+
+
+
+
+
+
+
+
+                        <div class="rating">
+                          {% with avg=menu.average_rating %}
+                              {% for i in "12345" %}
+                                  {% if i <= avg|stringformat:"d" %}
+                                      <span style="color: gold;">&#9733;</span>
+                                  {% else %}
+                                      <span style="color: lightgray;">&#9733;</span>
+                                  {% endif %}
+                              {% endfor %}
+                              <small>({{ avg }}/5)</small>
+                          {% endwith %}
+                      </div>
+                      
+                        
+
+
+
+
+
+
+
+
+
+                        <p><strong>Estimated Wait Time:</strong> {{ menu.preparation_time }} minutes</p>
+                        <form action="{% url 'add_to_cart' menu.id %}" method="POST">
+                            {% csrf_token %}
+                            <input type="number" name="quantity" value="1" min="1">
+                            <button type="submit" class="add-to-cart">Add to Cart</button>
+                        </form>
+
+                        <form method="post" action="{% url 'toggle_favorite_menu_item' menu.id %}" style="margin-top: 10px;">
+                          {% csrf_token %}
+                          <input type="hidden" name="next" value="{{ request.path }}">
+                          <button type="submit" style="background: none; border: none; font-size: 20px; cursor: pointer;">
+                              {% if menu.id in favorite_menu_ids %}
+                                  ❤️
+                              {% else %}
+                                  🩶
+                              {% endif %}
+                          </button>
+                      </form>
+
+                      <a href="{% url 'rate_menu_item' menu.id %}" class="button" style="margin-top: 10px; display: inline-block;">⭐ Rate this item</a>
+
+                    </div>
+                    <img src="{{ menu.image_url }}" alt="{{ menu.name }} Image" onerror="this.onerror=null; this.src='default_image.jpg';">
+
+                </div>
+                {% empty %}
+                <li>No menu items available for this outlet.</li>
+                {% endfor %}
+                
+            </div>
+        </div>
+    </section>
+    
+
+
+
+
+    
+    <button class="button"><a href="{% url 'outlet_list' %}">Back to Outlets</a></button>
+    <button class="button"><a href="{% url 'view_cart' %}">View Cart</a></button> <!-- Link to view cart -->
+
+</body>
+</html>

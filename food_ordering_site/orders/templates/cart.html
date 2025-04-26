@@ -1,0 +1,142 @@
+<!-- cart.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart</title>
+</head>
+<body>
+    <h1>Your Cart</h1>
+    <ul>
+        {% for menu_id, item in cart.cart.items %}
+            <li>
+                Menu Item ID: {{ menu_id }} - Quantity: {{ item.quantity }} - Price: ${{ item.price }}
+                <form action="{% url 'remove_from_cart' menu_id %}" method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit">Remove</button>
+                </form>
+            </li>
+        {% empty %}
+            <li>Your cart is empty.</li>
+        {% endfor %}
+    </ul>
+    <h2>Total Price: ${{ cart.get_total_price }}</h2>
+    <a href="{% url 'outlet_list' %}">Continue Shopping</a>
+</body>
+</html> -->
+<!-- cart.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+        }
+        h1{
+            font-size: 2.5em;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #343a40;
+        }
+
+        ul {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        li {
+            background: #ffffff;
+            border: 1px solid #dee2e6;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .cart_box{
+            padding: 20px;
+            font-size: 20px;
+            line-height: 30px;
+        }
+
+        form {
+            margin: 0;
+        }
+
+        button {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 12px 22px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        button:hover {
+            background-color: #c82333;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: none;
+            background-color: #007bff;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 4px;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        a:hover {
+            background-color: #0056b3;
+        }
+
+        .total {
+            text-align: center;
+            font-size: 1em;
+            margin-top: 20px;
+            color: #28a745;
+        }
+    </style>
+</head>
+<body>
+    <h1>Your Cart</h1>
+    <ul>
+        {% for menu_id, item in cart.cart.items %}
+            <li>
+                <div class="cart_box">
+                    <strong>Menu Item ID:</strong> {{ menu_id }}<br>
+                    <strong>Quantity:</strong> {{ item.quantity }}<br>
+                    <strong>Price:</strong> ${{ item.price }}
+                </div>
+                <form action="{% url 'remove_from_cart' menu_id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">Remove</button>
+                </form>
+            </li>
+        {% empty %}
+            <li style="text-align: center;">Your cart is empty.</li>
+        {% endfor %}
+    </ul>
+    <div class="total">
+        <h2>Total Price: ${{ cart.get_total_price }}</h2>
+    </div>
+    <a href="{% url 'place_order' %}">Place Order</a>
+    <a href="{% url 'outlet_list' %}">Continue Shopping</a>
+</body>
+</html>

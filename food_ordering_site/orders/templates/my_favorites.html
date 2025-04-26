@@ -1,0 +1,123 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Favorite Outlets</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fff;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    .outlet-section {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .outlet-section h1 {
+      font-size: 36px;
+      font-weight: bold;
+      margin-bottom: 30px;
+    }
+
+    .outlet-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      padding: 0 20px;
+    }
+
+    .outlet-card {
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      overflow: hidden;
+      background-color: #fafafa;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .outlet-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .outlet-card-content {
+      padding: 15px;
+    }
+
+    .outlet-card h2 {
+      margin: 0 0 10px;
+      font-size: 22px;
+    }
+
+    .outlet-card p {
+      color: #666;
+      font-size: 14px;
+      margin: 5px 0 15px;
+    }
+
+    .outlet-card a.button {
+      display: inline-block;
+      padding: 8px 20px;
+      background-color: green;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 40px;
+      text-decoration: none;
+      color: #007bff;
+      font-weight: bold;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    .signup {
+            background-color: black;
+            color: white;
+            margin-left: 20px;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1.15rem;
+        }
+  </style>
+</head>
+<body>
+  <section class="outlet-section">
+    <h1>My Favorite Outlets</h1>
+
+    <div class="outlet-cards">
+      {% for outlet in favorite_outlets %}
+      <div class="outlet-card">
+        <img src="{{ outlet.image_url }}" alt="{{ outlet.name }}" />
+        <div class="outlet-card-content">
+          <h2>{{ outlet.name }}</h2>
+          <p>Location: {{ outlet.location }}</p>
+          <a href="{% url 'menu_list' outlet.id %}" class="button">View Menu</a>
+        </div>
+      </div>
+      {% empty %}
+        <p>You haven't favorited any outlets yet.</p>
+      {% endfor %}
+    </div>
+    <button class="signup"><a style="color: white;" href="{% url 'my_favorite_menuitems' %}" class="button" style="text-decoration: none;">❤️Menus</a></button>
+
+
+    <a href="{% url 'student_dashboard' %}" class="back-link">← Back to Dashboard</a>
+  </section>
+</body>
+</html>

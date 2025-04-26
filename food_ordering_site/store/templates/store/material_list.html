@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Materials in {{ material_type.name }}</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      padding: 30px;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    a {
+      text-decoration: none;
+      color: #007bff;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .add-link {
+      display: inline-block;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      background: #fff;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    img {
+      display: block;
+      margin-top: 10px;
+      max-width: 150px;
+      border-radius: 8px;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Materials in {{ material_type.name }}</h1>
+
+<a href="{% url 'store_add_material' material_type.id %}" class="add-link">+ Add Material</a>
+
+<ul>
+  {% for material in materials %}
+    <li>
+      <strong>{{ material.name }}</strong> - ₹{{ material.price }} |
+      <a href="{% url 'store_edit_material' material.id %}">Edit</a> |
+      <a href="{% url 'store_delete_material' material.id %}">Delete</a>
+      {% if material.image_url %}
+        <img src="{{ material.image_url }}" alt="{{ material.name }}">
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>
+
+<a href="{% url 'store_material_type_list' %}" class="back-link">← Back to Material Types</a>
+
+</body>
+</html>

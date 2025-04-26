@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Your Cart</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f8;
+      padding: 30px;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 25px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      background: #fff;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    h3 {
+      margin: 0 0 10px 0;
+      color: #444;
+    }
+
+    img {
+      display: block;
+      margin: 10px 0;
+      border-radius: 8px;
+      max-width: 150px;
+    }
+
+    form {
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    label {
+      margin-right: 5px;
+      font-weight: bold;
+    }
+
+    input[type="number"] {
+      width: 60px;
+      padding: 5px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      padding: 6px 12px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 20px;
+      text-decoration: none;
+      color: #007bff;
+      font-weight: bold;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    p {
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Your Cart</h1>
+
+{% if cart %}
+  <ul>
+    {% for id, item in cart.items %}
+      <li>
+        <h3>{{ item.name }} - ₹{{ item.price }}</h3>
+        {% if item.image_url %}
+          <img src="{{ item.image_url }}" alt="{{ item.name }}">
+        {% endif %}
+        <form action="{% url 'store_edit_cart' id %}" method="POST">
+          {% csrf_token %}
+          <label>Quantity:</label>
+          <input type="number" name="quantity" value="{{ item.quantity }}" min="1">
+          <button type="submit">Update</button>
+        </form>
+        <form action="{% url 'store_remove_from_cart' id %}" method="POST" style="display:inline;">
+          {% csrf_token %}
+          <button type="submit">Remove</button>
+        </form>
+      </li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'store_student_material_type_list' %}">← Continue Shopping</a>
+{% else %}
+  <p>Your cart is empty.</p>
+{% endif %}
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Material Types</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f2f5;
+      padding: 30px;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .add-link {
+      display: inline-block;
+      margin-bottom: 20px;
+      font-weight: bold;
+      text-decoration: none;
+      color: #007bff;
+    }
+
+    .add-link:hover {
+      text-decoration: underline;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      background: #fff;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    li strong {
+      font-size: 18px;
+    }
+
+    img {
+      display: block;
+      margin-top: 10px;
+      max-width: 150px;
+      border-radius: 8px;
+    }
+
+    a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Material Types</h1>
+
+<a href="{% url 'store_add_material_type' %}" class="add-link">+ Add New Type</a>
+
+<ul>
+  {% for type in types %}
+    <li>
+      <strong>{{ type.name }}</strong> -
+      <a href="{% url 'store_material_list' type.id %}">View Materials</a> |
+      <a href="{% url 'store_edit_material_type' type.id %}">Edit</a> |
+      <a href="{% url 'store_delete_material_type' type.id %}">Delete</a>
+      {% if type.image_url %}
+        <img src="{{ type.image_url }}" alt="{{ type.name }}">
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>
+<a href="{% url 'manager_dashboard' %}">back to manager dashboard</a>
+
+</body>
+</html>

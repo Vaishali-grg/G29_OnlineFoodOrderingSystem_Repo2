@@ -1,0 +1,151 @@
+<style>
+  body {
+    background: url('https://images.unsplash.com/photo-1604908177522-4020b17f09b3?auto=format&fit=crop&w=1740&q=80') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+  }
+
+  .overlay {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    padding: 40px 30px;
+    border-radius: 20px;
+    max-width: 1000px;
+    margin: 60px auto;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .recipe-title {
+    text-align: center;
+    font-size: 2.4rem;
+    color: #222;
+    margin-bottom: 25px;
+    font-weight: 700;
+  }
+
+  .recipe-img {
+    width: 100%;
+    max-height: 450px;
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+    margin-bottom: 25px;
+    transition: transform 0.3s ease;
+  }
+
+  .recipe-img:hover {
+    transform: scale(1.015);
+  }
+
+  .section-label {
+    font-weight: bold;
+    margin-top: 20px;
+    color: #2c2c2c;
+  }
+
+  pre, p {
+    font-size: 1.05rem;
+    color: #333;
+  }
+
+  pre {
+    background: rgba(243, 244, 246, 0.7);
+    padding: 18px;
+    border-radius: 10px;
+    white-space: pre-wrap;
+    margin-bottom: 20px;
+  }
+
+  .meta {
+    font-size: 0.9rem;
+    color: #666;
+    text-align: right;
+    margin-top: -10px;
+  }
+
+  .btn-group {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 35px;
+  }
+
+  .btn-group a {
+    margin: 5px;
+    flex-grow: 1;
+    text-align: center;
+    padding: 12px 20px;
+    font-weight: 600;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.25s ease, transform 0.25s ease;
+  }
+
+  .btn-secondary {
+    background-color: #ffffffdd;
+    color: #333;
+    border: 1px solid #ccc;
+  }
+
+  .btn-secondary:hover {
+    background-color: #f0f0f0;
+    transform: translateY(-2px);
+  }
+
+  .btn-warning {
+    background-color: #ffc107;
+    color: #000;
+  }
+
+  .btn-warning:hover {
+    background-color: #e0a800;
+    transform: translateY(-2px);
+  }
+
+  .btn-danger {
+    background-color: #dc3545;
+    color: white;
+  }
+
+  .btn-danger:hover {
+    background-color: #c82333;
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 600px) {
+    .btn-group {
+      flex-direction: column;
+    }
+  }
+</style>
+
+<div class="overlay">
+  <h2 class="recipe-title">{{ recipe.title }}</h2>
+
+  {% if recipe.image_url %}
+    <img src="{{ recipe.image_url }}" alt="{{ recipe.title }}" class="recipe-img">
+  {% endif %}
+
+  <p class="section-label">Description:</p>
+  <p>{{ recipe.description }}</p>
+
+  <p class="section-label">Category:</p>
+  <p>{{ recipe.category.name }}</p>
+
+  <p class="section-label">Ingredients:</p>
+  <pre>{{ recipe.ingredients }}</pre>
+
+  <p class="section-label">Instructions:</p>
+  <pre>{{ recipe.instructions }}</pre>
+
+  <p class="meta"><em>Created on {{ recipe.created_at|date:"M d, Y" }}</em></p>
+
+  <div class="btn-group">
+    <a href="{% url 'recipe_list' %}" class="btn btn-secondary">← Back to Recipes</a>
+    <a href="{% url 'update_recipe' recipe.pk %}" class="btn btn-warning">✏️ Edit</a>
+    <a href="{% url 'delete_recipe' recipe.pk %}" class="btn btn-danger">🗑️ Delete</a>
+  </div>
+</div>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #e0e1dd;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-container {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.profile-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.profile-avatar {
+    font-size: 5rem;
+    color: #1b263b;
+    margin-bottom: 1rem;
+}
+
+.profile-header h1 {
+    color: #333;
+    margin: 0;
+}
+
+.profile-info {
+    margin-bottom: 2rem;
+}
+
+.info-group {
+    margin: 1rem 0;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.info-group label {
+    font-weight: bold;
+    color: #1b263b;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.info-group span {
+    color: #333;
+}
+
+.profile-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+button {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.back-btn {
+    background-color: #778DA9;
+    color: white;
+}
+
+.logout-btn {
+    background-color: #e63946;
+    color: white;
+}
+
+button:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 480px) {
+    .profile-container {
+        width: 95%;
+        padding: 1rem;
+    }
+
+    .profile-actions {
+        flex-direction: column;
+    }
+
+    button {
+        width: 100%;
+        justify-content: center;
+    }
+} 
+a{
+    text-decoration: none;
+    color: black;
+}
+    </style>
+</head>
+<body>
+
+
+    <div class="profile-container">
+        <div class="profile-header">
+            <i class="fas fa-user-circle profile-avatar"></i>
+            <h1>Profile Information</h1>
+        </div>
+
+        <div class="profile-info">
+            <div class="info-group">
+                <label>Name:</label>
+                <span id="profile-name">{{ user.username }}</span>
+            </div>
+            
+            <div class="info-group">
+                <label>Email:</label>
+                <span id="profile-email">{{ user.email }}</span> 
+            </div>
+
+            <div class="info-group">
+                <label>Role:</label>
+                <span id="profile-role">{{ user.role }}</span> 
+            </div>
+            
+            <!-- <div class="info-group">
+                <label>Member Since:</label>
+                <span id="member-since">{{ member_since }}</span>
+            </div> -->
+        </div>
+
+        <div class="profile-actions">
+            <!-- <button class="back-btn" onclick="window.location.href='index.html'">
+                <i class="fas fa-arrow-left"></i>
+                <a href="#">Back to Home</a>
+            </button> -->
+            <button class="logout-btn" onclick="handleLogout()">
+                <i class="fas fa-sign-out-alt"></i>
+                <a href="{% url 'logout' %}">Logout</a>
+            </button>
+        </div>
+    </div>
+</body>
+</html>

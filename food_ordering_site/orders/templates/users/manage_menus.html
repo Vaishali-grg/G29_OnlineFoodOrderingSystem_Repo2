@@ -1,0 +1,195 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Menus for {{ outlet.name }}</title>
+</head>
+<body>
+    <h1>Menus for {{ outlet.name }}</h1>
+    <a href="{% url 'create_menu' outlet.id %}" class="add-menu-btn">+ Add New Menu Item</a>
+    <ul>
+
+
+        {% for menu in menus %}
+        <div class="menu-card">
+            <h3>{{ menu.name }}</h3>
+            <p>{{ menu.description }}</p>
+            <p>Price: ₹{{ menu.price }}</p>
+            <img src="{{menu.image_url}}" alt="img">
+
+            <a class="edit-btn" href="{% url 'edit_menu' outlet.id menu.id %}">Edit</a>
+            <a class="delete-btn" href="{% url 'delete_menu' outlet.id menu.id %}">Delete</a>
+        </div>
+        {% empty %}
+            <p>No menu items found.</p>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'manage_outlets' %}">Back to Manage Outlets</a>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Menus for {{ outlet.name }}</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            padding: 30px 20px 10px;
+            font-size: 32px;
+            color: #222;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .add-menu-btn {
+            display: inline-block;
+            margin: 20px 0;
+            padding: 12px 24px;
+            background: #4CAF50;
+            color: #fff;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+
+        .add-menu-btn:hover {
+            background-color: #388e3c;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .menu-card {
+            background: #fff;
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .menu-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 12px;
+        }
+
+        .menu-card h3 {
+            margin: 0 0 8px;
+            font-size: 22px;
+            color: #333;
+        }
+
+        .menu-card p {
+            margin: 6px 0;
+            font-size: 15px;
+            color: #555;
+        }
+
+        .btn-group {
+            margin-top: 12px;
+        }
+
+        .edit-btn, .delete-btn {
+            display: inline-block;
+            padding: 8px 14px;
+            margin-right: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: background 0.3s ease;
+        }
+
+        .edit-btn {
+            background-color: #2196F3;
+            color: #fff;
+        }
+
+        .edit-btn:hover {
+            background-color: #1976D2;
+        }
+
+        .delete-btn {
+            background-color: #f44336;
+            color: #fff;
+        }
+
+        .delete-btn:hover {
+            background-color: #d32f2f;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin: 40px auto 10px;
+            font-weight: bold;
+            color: #555;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: #000;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Menus for {{ outlet.name }}</h1>
+
+    <div class="container">
+        <a href="{% url 'create_menu' outlet.id %}" class="add-menu-btn">+ Add New Menu Item</a>
+
+        <div class="menu-grid">
+            {% for menu in menus %}
+                <div class="menu-card">
+                    {% if menu.image_url %}
+                        <img src="{{ menu.image_url }}" alt="{{ menu.name }}">
+                    {% endif %}
+                    <h3>{{ menu.name }}</h3>
+                    <p>{{ menu.description }}</p>
+                    <p><strong>Price:</strong> ₹{{ menu.price }}</p>
+                    <p><strong>Estimated Wait Time:</strong> {{ menu.preparation_time }} minutes</p>
+                    <div class="btn-group">
+                        <a class="edit-btn" href="{% url 'edit_menu' outlet.id menu.id %}">Edit</a>
+                        <a class="delete-btn" href="{% url 'delete_menu' outlet.id menu.id %}">Delete</a>
+                    </div>
+                </div>
+            {% empty %}
+                <p>No menu items found.</p>
+            {% endfor %}
+        </div>
+
+        <a href="{% url 'manage_outlets' %}" class="back-link">← Back to Manage Outlets</a>
+    </div>
+</body>
+</html>

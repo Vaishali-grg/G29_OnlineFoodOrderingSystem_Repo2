@@ -1,0 +1,94 @@
+<!-- <h2>Confirm Delete</h2>
+<p>Are you sure you want to delete the outlet: "{{ outlet.name }}"?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Yes, Delete</button>
+    <a href="{% url 'manage_outlets' %}">Cancel</a>
+</form> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirm Delete</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .delete-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h2 {
+            color: #dc3545;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        form {
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        button[type="submit"] {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #c82333;
+        }
+
+        a {
+            text-decoration: none;
+            color: #6c757d;
+            font-size: 16px;
+            padding: 10px 20px;
+            border: 1px solid #6c757d;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #6c757d;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="delete-container">
+        <h2>Confirm Delete</h2>
+        <p>Are you sure you want to delete the outlet: "<strong>{{ outlet.name }}</strong>"?</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit">Yes, Delete</button>
+            <a href="{% url 'manage_outlets' %}">Cancel</a>
+        </form>
+    </div>
+</body>
+</html>

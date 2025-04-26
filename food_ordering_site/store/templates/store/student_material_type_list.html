@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Available Material Types</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9fafb;
+      padding: 30px;
+      color: #333;
+    }
+
+    h1 {
+      color: #2c3e50;
+      font-size: 2.2em;
+      margin-bottom: 25px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    li {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    h3 {
+      margin-top: 0;
+      color: #34495e;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 10px 0;
+    }
+
+    p {
+      font-size: 0.95em;
+      margin: 10px 0;
+    }
+
+    a {
+      margin-top: auto;
+      display: inline-block;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      padding: 10px 16px;
+      border-radius: 6px;
+      transition: background-color 0.3s ease;
+    }
+
+    a:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Available Material Types</h1>
+  <ul>
+    {% for type in types %}
+      <li>
+        <h3>{{ type.name }}</h3>
+        {% if type.image_url %}
+          <img src="{{ type.image_url }}" alt="{{ type.name }}">
+        {% endif %}
+        <p>{{ type.description }}</p>
+        <a href="{% url 'store_student_material_list' type.id %}">View Materials</a>
+      </li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'student_dashboard' %}">Student dashboard</a>
+
+</body>
+</html>

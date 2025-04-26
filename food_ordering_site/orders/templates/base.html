@@ -1,0 +1,1425 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .left, .center, .right {
+            display: flex;
+            align-items: center;
+        }
+        .brand {
+            font-size: 2em;
+            margin-left: 10px;
+        }
+        .right button {
+            margin-left: 20px;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1.15rem;
+        }
+        .signup {
+            background-color: black;
+            color: white;
+        }
+        .dropdown {
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+        a{
+            text-decoration: none;
+            color: black;
+        }
+        .footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background-color: #333;
+    color: white;
+    padding: 20px;
+}
+
+.footer-container div {
+    margin: 20px;
+}
+
+.footer-container h3 {
+    margin-top: 0;
+    text-align: center;
+}
+
+.footer-container a {
+    color: #ff6600;
+    text-decoration: none;
+}
+
+.footer-container a:hover {
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    background-color: #222;
+    color: #ccc;
+    text-align: center;
+    padding: 10px;
+}
+
+.newsletter form {
+    display: flex;
+    flex-direction: column;
+}
+
+.newsletter input[type="email"] {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+.newsletter button {
+    padding: 10px;
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.newsletter button:hover {
+    background-color: #ff5500;
+}
+.social-icons a {
+display: inline-block;
+margin: 0 10px;
+}
+.social-icons a img{
+height: 50px;
+width: 50px;
+}
+        /* Optional animated background */
+        .section1::before {
+            content: "";
+            position: absolute;
+            width: 100%; height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/batthern.png');
+            opacity: 0.05;
+            z-index: 0;
+            animation: float 20s infinite linear;
+        }
+        .section1{
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-size: cover;
+            background-position: center;
+            transition: background-image 0.7s ;
+            color: white;
+            text-align: center;
+        }
+        .hero {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+            text-align: center;
+            
+        }
+        
+        .content h2 {
+            font-size: 2rem;
+            font-weight: 600;
+        }
+        
+        .content h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin: 10px 0;
+        }
+        
+        .highlight {
+            color: white;
+        }
+
+        .content p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .btn {
+            text-decoration: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        
+        .learn-more {
+            background: white;
+            color: black;
+            border: 2px solid white;
+        }
+        
+        .learn-more:hover {
+            background: transparent;
+            color: white;
+        }
+        
+        .order-now {
+            background: orange;
+            color: white;
+            border: 2px solid orange;
+        }
+        
+        .order-now:hover {
+            background: transparent;
+            color: orange;
+        }
+        
+        /* Enhanced Food Categories Section */
+        .food-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 50px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .category {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            transition: 0.3s ease-in-out;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .category:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+        
+        .category img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .category h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .category p {
+            font-size: 1rem;
+            color: #f0f0f0;
+        }
+        @keyframes float {
+            0% { background-position: 0 0; }
+            100% { background-position: 1000px 0; }
+        }
+        
+        .hero, .food-categories {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .item {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        /* When item is visible */
+        .item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Pulse effect on hover */
+        .item:hover {
+            animation: pulse 0.5s;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Tooltip styling */
+        .icon img {
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .icon img::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            background: #e65100;
+            color: white;
+            padding: 5px 10px;
+            font-size: 12px;
+            border-radius: 5px;
+            opacity: 0;
+            pointer-events: none;
+            transition: 0.3s ease;
+            z-index: 10;
+        }
+        
+        .icon img:hover::after {
+            opacity: 1;
+        }
+        .section2 {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 40px 0;
+        }
+        .container h2 {
+            font-size: 28px;
+            font-weight: bold;
+            text-transform: uppercase;
+            position: relative;
+            display: inline-block;
+        }
+        .container h2::after {
+            content: "";
+            display: block;
+            width: 60%;
+            height: 3px;
+            background-color: orange;
+            margin: auto;
+            margin-top: 5px;
+        }
+        .specialities {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+            padding: 0 20px;
+        }
+        .item {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            /* box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); */
+            transition: transform 0.3s ease-in-out;
+            height: 200px;
+        }
+        .item:hover {
+            transform: translateY(-5px);
+        }
+        .icon img{
+            width: 80px;
+            height: 80px;
+            background-color: #e65100;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+        }
+        .title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 15px;
+            color: #333;
+        }
+        .description {
+            font-size: 16px;
+            color: #666;
+            margin-top: 5px;
+            margin-bottom: -80px;
+        }
+        @media (max-width: 768px) {
+            .specialities {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+        }
+
+
+        .section3 {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        .deal-section {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            background: url('https://bethhallphotography.com/wp-content/uploads/2019/11/Big-Orange-84.jpg') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+        .overlay3 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .content2 {
+            position: relative;
+            z-index: 2;
+        }
+        .content2 h2 {
+            font-size: 32px;
+            font-weight: bold;
+        }
+        .content2 p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        .btn2 {
+            display: inline-block;
+            background: #ff6600;
+            color: white;
+            padding: 12px 20px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background: #e55b00;
+        }
+        @media (max-width: 768px) {
+            .deal-section {
+                height: 300px;
+            }
+            .content2 h2 {
+                font-size: 24px;
+            }
+            .content2 p {
+                font-size: 16px;
+            }
+            .btn2 {
+                padding: 10px 16px;
+                font-size: 14px;
+            }
+        }
+        .section4 {
+            padding: 60px 0;
+            background-color: #ffffff;
+        }
+        .container4 {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .container4 h2 {
+            font-size: 36px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        .container4 h2::after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: #2980b9;
+            margin: 10px auto 0;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+        .gallery-item {
+            border-radius: 12px;
+            overflow: hidden;
+            background: #ffffff;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+            transform: scale(1);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+        .gallery-item::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
+            transform: skewX(-20deg);
+            transition: left 0.75s ease-in-out;
+        }
+        .gallery-item:hover::before {
+            left: 100%;
+        }
+        .gallery-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 12px 12px 0 0;
+            display: block;
+        }
+        .caption {
+            padding: 15px;
+            font-size: 16px;
+            color: #555;
+        }
+        @media (max-width: 768px) {
+            .container4 h2 {
+                font-size: 28px;
+            }
+        }
+        
+
+          .recipe-showcase {
+            padding: 60px 10% 50px;
+            background: url('https://images.unsplash.com/photo-1506354666786-959d6d497f1a?fit=crop&w=1600&q=80') center center/cover no-repeat;
+            color: #fff;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+          }
+        
+          .recipe-showcase::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.55);
+            backdrop-filter: blur(10px);
+            z-index: 0;
+          }
+        
+          .recipe-title {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+          }
+        
+          .recipe-subtext {
+            font-size: 15px;
+            margin-bottom: 30px;
+            color: #ddd;
+            position: relative;
+            z-index: 1;
+          }
+        
+          .recipe-cards {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+            position: relative;
+            z-index: 1;
+          }
+        
+          .recipe-card {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            width: 240px;
+            padding: 15px;
+            text-align: left;
+            color: #fff;
+            transition: transform 0.3s ease;
+          }
+        
+          .recipe-card:hover {
+            transform: translateY(-6px);
+          }
+        
+          .recipe-card img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 12px;
+          }
+        
+          .recipe-card h3 {
+            font-size: 18px;
+            margin: 8px 0;
+          }
+        
+          .recipe-card p {
+            font-size: 13px;
+            color: #eee;
+          }
+        
+          .recipe-btn {
+            display: inline-block;
+            margin-top: 35px;
+            padding: 10px 22px;
+            background: #ff7d5a;
+            color: #fff;
+            border-radius: 30px;
+            font-size: 14px;
+            text-decoration: none;
+            position: relative;
+            z-index: 1;
+            transition: background 0.3s;
+          }
+        
+          .recipe-btn:hover {
+            background: #ff5a35;
+          }
+        
+          @media(max-width: 768px) {
+            .recipe-title {
+              font-size: 24px;
+            }
+        
+            .recipe-subtext {
+              font-size: 14px;
+            }
+        
+            .recipe-cards {
+              flex-direction: column;
+              align-items: center;
+            }
+        
+            .recipe-card {
+              width: 90%;
+            }
+          }
+          .testimonial-section {
+            background: url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+            position: relative;
+            padding: 60px 20px; /* reduced from 100px */
+            text-align: center;
+            color: #fff;
+            overflow: hidden;
+          }
+        
+          .testimonial-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            backdrop-filter: blur(8px);
+            background-color: rgba(0, 0, 0, 0.4);
+            z-index: 0;
+          }
+        
+          .testimonial-section h2 {
+            position: relative;
+            z-index: 1;
+            font-size: 36px;
+            margin-bottom: 40px; /* reduced from 60px */
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+          }
+        
+          .testimonials {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 25px; /* reduced from 40px */
+            max-width: 900px;
+            margin: 0 auto;
+          }
+        
+          .testimonial {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 18px; /* reduced from 25px */
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            text-align: left;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+          }
+        
+          .testimonial img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #fff;
+          }
+        
+          .testimonial-content {
+            flex: 1;
+          }
+        
+          .testimonial-content p {
+            font-size: 16px;
+            color: #f1f1f1;
+            margin-bottom: 6px;
+            line-height: 1.5;
+          }
+        
+          .testimonial-content span {
+            font-size: 14px;
+            color: #ddd;
+            font-style: italic;
+          }
+        
+          @media (max-width: 768px) {
+            .testimonial {
+              flex-direction: column;
+              align-items: flex-start;
+            }
+        
+            .testimonial-section h2 {
+              font-size: 28px;
+            }
+          }
+
+          .how-it-works {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 40px 20px;
+            display: flex;
+            gap: 60px;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: white;
+          }
+      
+          .how-it-works img {
+            width: 100%;
+            max-width: 480px;
+            border-radius: 20px;
+            
+          }
+      
+          .steps-content {
+            flex: 1;
+            min-width: 320px;
+          }
+      
+          .steps-content h5 {
+            text-transform: uppercase;
+            color: #c0392b;
+            letter-spacing: 1.2px;
+            font-size: 1rem;
+          }
+      
+          .steps-content h2 {
+            font-size: 2.5rem;
+            color: #222;
+            margin: 10px 0;
+          }
+      
+          .steps-content p.subtitle {
+            color: #555;
+            font-size: 1rem;
+            margin-bottom: 30px;
+          }
+      
+          .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 25px;
+            transition: all 0.3s ease-in-out;
+            border-left: 4px solid #c0392b;
+            padding-left: 16px;
+          }
+      
+          .step:hover {
+            transform: translateY(-4px);
+          }
+      
+          .step-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #fbeaea;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #c0392b;
+            font-size: 22px;
+            flex-shrink: 0;
+          }
+      
+          .step h4 {
+            margin: 0 0 5px 0;
+            font-size: 1.1rem;
+            color: #c0392b;
+          }
+      
+          .step p {
+            margin: 0;
+            color: #444;
+            font-size: 0.95rem;
+          }
+      
+          @media (max-width: 768px) {
+            .how-it-works {
+              flex-direction: column;
+              padding: 20px;
+              text-align: center;
+            }
+      
+            .step {
+              flex-direction: column;
+              align-items: center;
+              text-align: center;
+              border-left: none;
+              border-top: 4px solid #c0392b;
+              padding-top: 20px;
+              padding-left: 0;
+            }
+      
+            .step-icon {
+              margin-bottom: 10px;
+            }
+          }
+          .faq-section {
+            max-width: 1000px;
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+            background-color: #fff;
+            color: #222;
+            box-sizing: border-box;
+            margin:auto;
+            margin-bottom: 80px;
+            margin-top: 80px;
+          }
+      
+          .faq-section h5 {
+            color: #d63031;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 10px;
+          }
+      
+          .faq-section h2 {
+            font-size: 2.4rem;
+            margin: 0;
+          }
+      
+          .faq-section p {
+            color: #666;
+            font-size: 1rem;
+            margin-bottom: 40px;
+          }
+      
+          .faq-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            text-align: left;
+          }
+      
+          .faq-item {
+            background-color: #fff3f1;
+            border-radius: 16px;
+            padding: 20px 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+          }
+      
+          .faq-item.open {
+            background-color: #ffffff;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+            border: 1px solid #f1c0bd;
+          }
+      
+          .faq-question {
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1rem;
+          }
+      
+          .faq-answer {
+            margin-top: 12px;
+            font-size: 0.95rem;
+            color: #444;
+            display: none;
+            line-height: 1.5;
+          }
+      
+          .faq-item.open .faq-answer {
+            display: block;
+          }
+      
+          .arrow {
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+          }
+      
+          .faq-item.open .arrow {
+            transform: rotate(180deg);
+          }
+      
+          .icon {
+            margin-right: 8px;
+            color: #d63031;
+          }
+      
+          .view-all-btn {
+            margin-top: 35px;
+            background-color: #d63031;
+            color: #fff;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+          }
+      
+          .view-all-btn:hover {
+            background-color: #c0392b;
+          }
+      
+          @media (max-width: 768px) {
+            .faq-container {
+              grid-template-columns: 1fr;
+            }
+          }
+
+
+         
+    .tuckshop-showcase {
+      background: #f0f8ff;
+      padding: 50px 30px;
+      text-align: center;
+      border-radius: 16px;
+      margin-top: 50px;
+    }
+  
+    .tuckshop-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #2e4053;
+      margin-bottom: 15px;
+    }
+  
+    .tuckshop-subtext {
+      font-size: 1.1rem;
+      color: #555;
+      margin-bottom: 30px;
+    }
+  
+    .tuckshop-cards {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+  
+    .tuckshop-card {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      padding: 20px;
+      width: 300px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+  
+    .tuckshop-card:hover {
+      transform: translateY(-5px);
+    }
+  
+   
+    .tuckshop-card img {
+        width: 100%;
+        height: 180px;
+        object-fit: contain; /* ensures full image is shown */
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+        background-color: white; /* optional: adds a clean background behind transparent images */
+      }
+      
+      
+  
+    .tuckshop-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+      color: #34495e;
+    }
+  
+    .tuckshop-card p {
+      font-size: 0.95rem;
+      color: #666;
+    }
+  
+    .tuckshop-btn {
+      display: inline-block;
+      margin-top: 30px;
+      background-color: #17a2b8;
+      color: white;
+      padding: 10px 18px;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: background-color 0.3s ease;
+    }
+  
+    .tuckshop-btn:hover {
+      background-color: #138496;
+    }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="left">
+            <i class="fas fa-bars dropdown"></i>
+            <span class="brand"><b>Campus</b>Bites</span>
+        </div>
+        <div class="right">
+                        
+                            {% block content %}
+                            {% endblock %}
+                            
+                      
+        </div>
+    </nav>
+    <section class="section1">
+        <section class="hero">
+            <div class="content">
+                <h2 id="typewriter">DELICIOUS <span class="highlight">FOOD ITEMS</span></h2>
+                <h1>"ORDER FRESH, <span class="highlight-orange">CAMPUSBITES!"</span></h1>
+                <p>Enjoy Delicious Food!</p>
+                <div class="buttons">
+                    <a href="#" class="btn learn-more" onclick="showMessage('Learn more about our services!')">LEARN MORE</a>
+                    <a href="#" class="btn order-now" onclick="showMessage('Redirecting to order page...')">ORDER NOW</a>
+                </div>
+            </div>
+        </section>
+        <section class="food-categories">
+            <div class="category" onmouseover="highlightCategory(this)" onmouseout="unhighlightCategory(this)">
+                <img src="https://wallpapercave.com/wp/wp4289092.jpg" alt="Fish Steak">
+                <h3>ITALIAN DELICACIES</h3>
+                <p>Savor the taste of perfectly baked Italian pizza</p>
+            </div>
+            <div class="category" onmouseover="highlightCategory(this)" onmouseout="unhighlightCategory(this)">
+                <img src="http://whiteflowercake.com/wp-content/gallery/classic-cakes-new/PINK-MAC.jpg" alt="Bakery Items">
+                <h3>BAKERY ITEMS</h3>
+                <p>Freshly baked delights with rich flavors and textures.</p>
+            </div>
+            <div class="category" onmouseover="highlightCategory(this)" onmouseout="unhighlightCategory(this)">
+                <img src="https://img.livestrong.com/375/photos.demandstudios.com/getty/article/64/20/177299363.jpg" alt="Fresh Food">
+                <h3>FRESH FOOD</h3>
+                <p>Healthy and organic ingredients for a nutritious meal.</p>
+            </div>
+        </section>
+    </section>
+    
+
+    <section class="section2">
+        <div class="container">
+            <h2>Our Specialities</h2>
+            <div class="specialities">
+                <div class="item">
+                    <div class="icon">
+                        <img  alt="DESCRIPTION" data-tooltip="Click to explore!" src="https://static.toiimg.com/photo/msid-66476758/66476758.jpg?1640939" alt="Dinner & Dessert=Heaven!">
+                    </div>
+                    <div class="title">Dinner & Dessert</div>
+                    <p>Dinner first,then dessert!</p>
+                    <div class="description">Enjoy Delicious Food!</div>
+                </div>
+                <div class="item">
+                    <div class="icon">
+                        <img  alt="DESCRIPTION" data-tooltip="Click to explore!"  src="https://www.lacademie.com/wp-content/uploads/2022/05/aloo-parathas-jpg.webp" alt="Breakfast">
+                    </div>
+                    <div class="title">Breakfast</div>
+                    <p>All happiness depends on a leisurely breakfast!</p>
+                    <div class="description">Enjoy Delicious Food!</div>
+                </div>
+                <div class="item">
+                    <div class="icon">
+                        <img alt="DESCRIPTION" data-tooltip="Click to explore!" src="https://irepo.primecp.com/2016/09/300915/Decadent-Smores-Freakshake-Milkshake-Recipe_ExtraLarge900_ID-1887816.jpg?v=1887816" alt="Ice Shakes">
+                    </div>
+                    <div class="title">Ice Shakes</div>
+                    <p>When life gets tough,shake it!</p>
+                    <div class="description">Enjoy Delicious Food!</div>
+                </div>
+                <div class="item">
+                    <div class="icon">
+                        <img alt="DESCRIPTION" data-tooltip="Click to explore!" src="https://baranddrink.com/wp-content/uploads/2022/11/Classic-Beverages-And-The-Cultures-Which-Created-Them-768x512.jpg" alt="Beverages">
+                    </div>
+                    <div class="title">Beverages</div>
+                    <p>Fresh up every moments!</p>
+                    <div class="description">Enjoy Delicious Food!</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+      {% block content1 %}
+        {% endblock %}
+
+
+      <section class="how-it-works">
+        <img src="https://images01.nicepagecdn.com/page/11/59/website-template-preview-1159646.jpg" alt="College Canteen Ordering" />
+      
+        <div class="steps-content">
+          <h5>HOW IT WORKS</h5>
+          <h2>Order Food Easily From Campus</h2>
+          <p class="subtitle">Save time and skip the queue — just a few taps and your meal is ready when you are.</p>
+      
+          <div class="step">
+            <div class="step-icon"><i class="fas fa-school"></i></div>
+            <div>
+              <h4>01. Choose Your Canteen</h4>
+              <p>Select your campus or hostel canteen from the available options in the app.</p>
+            </div>
+          </div>
+      
+          <div class="step">
+            <div class="step-icon"><i class="fas fa-utensils"></i></div>
+            <div>
+              <h4>02. Pick Your Meal</h4>
+              <p>Browse today’s menu — filter by veg/non-veg, dietary needs, or student favorites.</p>
+            </div>
+          </div>
+      
+          <div class="step">
+            <div class="step-icon"><i class="fas fa-credit-card"></i></div>
+            <div>
+              <h4>03. Pay Securely</h4>
+              <p>Pay using UPI, student wallet, or card — your choice, always secure.</p>
+            </div>
+          </div>
+      
+          <div class="step">
+            <div class="step-icon"><i class="fas fa-bell"></i></div>
+            <div>
+              <h4>04. Get Notified & Pick Up</h4>
+              <p>You’ll be notified when it’s ready — skip the line and collect your hot meal instantly!</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    
+
+    <section class="section3">
+        <div class="deal-section">
+            <div class="overlay3"></div>
+            <div class="content2">
+                <h2>HOT DEAL OF THE DAY</h2>
+                <p>Enjoy Delicious Food!</p>
+                <a href="#" class="btn2">ORDER NOW</a>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section4">
+        <div class="container4">
+            <h2>Our Food Gallery</h2>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="https://www.tasteofhome.com/wp-content/uploads/2018/01/exps28800_UG143377D12_18_1b_RMS.jpg" alt="Dish 1">
+                    <div class="caption">Sizzling Grilled Delicacies</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://insanelygoodrecipes.com/wp-content/uploads/2022/10/Homemade-Sweet-Ice-Cream-with-Different-Flavors-1024x1024.jpg" alt="Ice Cream">
+                    <div class="caption">Homemade Ice Cream Treats</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://akm-img-a-in.tosshub.com/sites/visualstory/stories/2022_08/story_9500/assets/13.jpeg?time=1660538901" alt="Street Food">
+                    <div class="caption">Authentic Indian Street Food</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://ganeshaeksanskriti.com/cdn/shop/products/chole-bhature30-7-6387f_be968a67-b53a-4178-9cad-27cd875fc27d.jpg?v=1701425739&width=1946" alt="Chole Bhature">
+                    <div class="caption">Classic Chole Bhature Delight</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="testimonial-section">
+        <h2>Students are Loving It </h2>
+        <div class="testimonials">
+          <div class="testimonial">
+            <img src="https://tse3.mm.bing.net/th?id=OIP.z_fteR9BXh4O1GBL72A1GgHaHZ&pid=Api&P=0&h=180" alt="Ananya">
+            <div class="testimonial-content">
+              <p>"The butter paneer rolls from Café 9? Absolute fire. I order right before class ends and it’s hot by the time I reach!"</p>
+              <span>— Ananya G., 2nd Year B.Tech</span>
+            </div>
+          </div>
+      
+          <div class="testimonial">
+            <img src="https://tse4.mm.bing.net/th?id=OIP.nn5qeVo4_6lTRbDz5BRGowHaHk&pid=Api&P=0&h=180" alt="Zaid">
+            <div class="testimonial-content">
+              <p>"No more canteen queues. I eat biryani in my pyjamas now. This app is legit the best thing on campus."</p>
+              <span>— Zaid M., Final Year Mech</span>
+            </div>
+          </div>
+      
+          <div class="testimonial">
+            <img src="https://tse1.mm.bing.net/th?id=OIP.JtOrgieD2K1Ho_2LjZnaUAHaH4&pid=Api&P=0&h=180" alt="Ritika">
+            <div class="testimonial-content">
+              <p>"Midnight cravings = handled. I literally ordered Maggi at 12:30 AM and it was still warm when it came. "</p>
+              <span>— Ritika P., MBA 1st Year</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    
+      <section class="faq-section">
+        <h5>CampusBites</h5>
+        <h2>Frequently Asked Questions</h2>
+        <p>All your meal-time queries answered!</p>
+      
+        <div class="faq-container">
+          <div class="faq-item open">
+            <div class="faq-question">
+              <span><span class="icon"></span>What are the canteen operating hours?</span>
+              <span class="arrow">&#x25B2;</span>
+            </div>
+            <div class="faq-answer">
+              The campus canteen is open from 8:00 AM to 9:00 PM on weekdays and 9:00 AM to 5:00 PM on weekends.
+            </div>
+          </div>
+      
+          <div class="faq-item">
+            <div class="faq-question">
+              <span><span class="icon"></span>How do I place an order?</span>
+              <span class="arrow">&#x25BC;</span>
+            </div>
+            <div class="faq-answer">
+              Just log in to the CampusBites app, choose your favorite dishes, and place an order. Pickup or delivery — your choice!
+            </div>
+          </div>
+      
+          <div class="faq-item">
+            <div class="faq-question">
+              <span><span class="icon"></span>What payment options are available?</span>
+              <span class="arrow">&#x25BC;</span>
+            </div>
+            <div class="faq-answer">
+              We accept UPI, debit/credit cards, net banking, and your student wallet linked to your college ID.
+            </div>
+          </div>
+      
+          <div class="faq-item">
+            <div class="faq-question">
+              <span><span class="icon"></span>How long does food preparation take?</span>
+              <span class="arrow">&#x25BC;</span>
+            </div>
+            <div class="faq-answer">
+              Food is usually delivered within 15–25 minutes, depending on kitchen load and your location on campus.
+            </div>
+          </div>
+      
+          <div class="faq-item">
+            <div class="faq-question">
+              <span><span class="icon"></span>Can I cancel or change my order?</span>
+              <span class="arrow">&#x25BC;</span>
+            </div>
+            <div class="faq-answer">
+              You can cancel or modify your order within 2 minutes of placing it. After that, it might already be cooking!
+            </div>
+          </div>
+      
+          <div class="faq-item">
+            <div class="faq-question">
+              <span><span class="icon"></span>Who do I contact for help?</span>
+              <span class="arrow">&#x25BC;</span>
+            </div>
+            <div class="faq-answer">
+              Use the "Support" section in the app to chat with our team, or visit the help desk at the canteen entrance.
+            </div>
+          </div>
+        </div>
+      
+        <button class="view-all-btn">View All Questions</button>
+      </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="about">
+                <h3>About Us</h3>
+                <p>“CampusBites is designed to make ordering delicious meals quick and effortless. Our mission is to provide a seamless dining experience by connecting students with their favorite canteen meals in just a few clicks.”</p>
+            </div>
+            <div class="contact">
+                <h3>Contact Us</h3>
+                <p>Email: <a href="#">campusbites123@gmail.com</a></p>
+                <p>Phone: 98765-XXXXX</p>
+                <p>Address: 123 Code Lane, Tech City, Innovation State, 98765</p>
+            </div>
+            <div class="follow">
+                <h3>Follow Us</h3>
+                <p><a href="https://www.facebook.com/learncode" target="_blank">Facebook</a></p>
+                <p><a href="https://www.twitter.com/learncode" target="_blank">Twitter</a></p>
+                <p><a href="https://www.instagram.com/learncode" target="_blank">Instagram</a></p>
+                <p><a href="https://www.linkedin.com/company/learncode" target="_blank">LinkedIn</a></p>
+            </div>
+            <div class="links">
+                <h3>Quick Links</h3>
+                <p><a href="#">Home</a></p>
+                <p><a href="#">More About Us</a></p>
+                <p><a href="#">Feedback</a></p>
+                <p><a href="#">Help</a></p>
+                <p><a href="#">Privacy Policy</a></p>
+                
+                <p><a href="">Terms of Service</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+          <div class="social-icons">
+            <a href="https://www.facebook.com/"><img src="https://img.icons8.com/fluency/2x/facebook-new.png" alt="Facebook"></a>
+            <a href="https://www.instagram.com/accounts/login/"><img src="https://img.icons8.com/fluency/2x/instagram-new.png" alt="Instagram"></a>
+            <a href="https://twitter.com/?lang=en"><img src="https://img.icons8.com/fluency/2x/twitter-squared.png" alt="Twitter"></a>
+          </div>
+          <p>Copyright © 2024 by CampusBites India</p>
+        </div>
+      </footer>
+
+
+    <script>
+      
+    // Typewriter effect for h2
+    const typeText = "DELICIOUS FOOD ITEMS";
+    let i = 0;
+    function typeWriter() {
+        if (i < typeText.length) {
+            document.getElementById("typewriter").innerHTML = typeText.slice(0, i + 1);
+            i++;
+            setTimeout(typeWriter, 100);
+        }
+    }
+    window.onload = typeWriter;
+    
+    // Button click message
+    function showMessage(message) {
+        alert(message);
+    }
+    
+    // Hover effects for categories
+    function highlightCategory(el) {
+        el.style.boxShadow = "0 0 20px orange";
+        el.style.transform = "scale(1.07)";
+    }
+    function unhighlightCategory(el) {
+        el.style.boxShadow = "none";
+        el.style.transform = "scale(1)";
+    }
+        // Array of background images
+        const backgrounds = [
+            "https://wallpapercave.com/wp/wp11872788.jpg",
+            "https://wallpapercave.com/wp/wp11872864.jpg",
+            "https://wallpapercave.com/wp/wp11872849.jpg",
+            "https://wallpapercave.com/wp/wp11872886.jpg",
+            
+            "https://wallpapercave.com/wp/wp11872914.jpg"
+        ];
+        
+        let index = 0;
+        
+        function changeBackground() {
+            const section = document.querySelector(".section1");
+            section.style.background = `url('${backgrounds[index]}') no-repeat center center/cover`;
+            index = (index + 1) % backgrounds.length;
+        }
+        
+        // Change background every 5 seconds
+        setInterval(changeBackground, 5000);
+        
+        // Set initial background
+        window.onload = changeBackground;
+      
+
+         // Scroll reveal for .item
+         const items = document.querySelectorAll('.item');
+        
+         function revealOnScroll() {
+             const triggerBottom = window.innerHeight * 0.85;
+         
+             items.forEach(item => {
+                 const itemTop = item.getBoundingClientRect().top;
+         
+                 if (itemTop < triggerBottom) {
+                     item.classList.add('visible');
+                 }
+             });
+         }
+         
+         window.addEventListener('scroll', revealOnScroll);
+         window.addEventListener('load', revealOnScroll); // Run on load too
+
+         const faqItems = document.querySelectorAll('.faq-item');
+
+         faqItems.forEach(item => {
+           item.addEventListener('click', () => {
+             faqItems.forEach(i => {
+               if (i !== item) {
+                 i.classList.remove('open');
+                 i.querySelector('.arrow').innerHTML = '&#x25BC;';
+               }
+             });
+             item.classList.toggle('open');
+             item.querySelector('.arrow').innerHTML = item.classList.contains('open') ? '&#x25B2;' : '&#x25BC;';
+           });
+         });
+    </script>
+    
+</body>
+</html>

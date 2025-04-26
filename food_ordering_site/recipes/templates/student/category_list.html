@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Categories</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 40px;
+      font-size: 2.5rem;
+    }
+
+    .category-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+    }
+
+    .category-card {
+      background-color: #ffffff;
+      border-radius: 15px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+      width: 220px;
+      overflow: hidden;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .category-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .category-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .category-card .category-name {
+      padding: 15px;
+      background-color: #f9f9f9;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .category-card .category-button {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      background-color: #007bff;
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 500;
+      border: none;
+      cursor: pointer;
+      border-radius: 0 0 15px 15px;
+      transition: background-color 0.2s ease;
+    }
+
+    .category-card .category-button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>Categories</h1>
+  <div class="category-container">
+    {% load static %}
+    {% for category in categories %}
+      <div class="category-card">
+        <img src="{{ category.image_url }}" alt="{{ category.name }}">
+        <div class="category-name">{{ category.name }}</div>
+        <a href="{% url 'student_recipe_by_category' category.id %}" class="category-button">View Recipes</a>
+      </div>
+    {% endfor %}
+  </div>
+  <a href="{% url 'student_dashboard' %}" style="margin-left:620px;" >Back to Student Dashboard</a>
+</body>
+</html>

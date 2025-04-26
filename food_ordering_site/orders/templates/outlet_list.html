@@ -1,0 +1,372 @@
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Outlets</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        
+        
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fff;
+            color: #333;
+            line-height: 1.6;
+        }
+        .outlet-section {
+            padding: 10px;
+            text-align: center;
+            background-color: #fff;
+        }
+        .outlet-section h1 {
+            font-size: 60px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 15px;
+            margin-top: 10px;
+        }
+        .outlet-section p {
+            font-size: 20px;
+            color: #777;
+            margin-bottom: 50px;
+            font-style: italic;
+        }
+        .outlet-cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            justify-items: center;
+        }
+        .outlet-card {
+            background-color: #fff;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 380px;
+            text-align: center;
+            border: 2px solid #e1e1e1;
+            margin-top: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .outlet-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+            border-color: #a6d1e6;
+        }
+        .outlet-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 12px;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .outlet-card h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        .outlet-card p {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 12px;
+        }
+        .outlet-card a {
+            display: inline-block;
+            text-decoration: none;
+            color: #fff;
+            background-color: green;
+            padding: 10px 30px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .outlet-card a:hover {
+            background-color: #89c8d9;
+        }
+        @media (max-width: 768px) {
+            .outlet-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .categories {
+            display: flex;
+            justify-content: center;
+            flex-direction: row;
+            gap: 20px;
+            padding: 20px;
+            background-color: white;
+            /* box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); */
+            margin-top: 25px;
+            margin-bottom: 40px;
+          }
+      
+          .category-item {
+            text-align: center;
+            cursor: pointer;
+          }
+          .category-item a{
+            text-decoration: none;
+            color: black;
+          }
+      
+          .category-icon {
+            width: 55px;
+            height: 55px;
+            margin-bottom: 5px;
+            border-radius: 50%;
+            border: 1px solid black;
+          }
+      
+          .category-label {
+            font-size: 14px;
+            color: #333;
+          }
+    </style>
+</head>
+<body>
+
+    <section class="outlet-section">
+        <h1>Our Outlets</h1>
+
+        <div class="categories">
+            <div class="category-item"><a href="./choice .html">
+              <img src="https://tse3.mm.bing.net/th?id=OIP.1iiR425WiXjBrY6rXx07sgHaEh&pid=Api&P=0&h=180" alt="Breakfast" class="category-icon">
+              <div class="category-label">Beverages</div>
+            </a></div>
+            <div class="category-item"><a>
+                <img src="https://tse2.mm.bing.net/th?id=OIP.1ILUBI81oCG4FvHFhAkqqgHaFi&pid=Api&P=0&h=180" alt="Breakfast" class="category-icon">
+                <div class="category-label">Snacks</div>
+            </a></div>
+            <div class="category-item"><a>
+                <img src="https://tse1.mm.bing.net/th?id=OIP.pABpYg4qjI-TWPBxzZrVXgHaE8&pid=Api&P=0&h=180" alt="Breakfast" class="category-icon">
+                <div class="category-label">Breakfast</div>
+            </a></div>
+            <div class="category-item"><a>
+                <img src="https://tse3.mm.bing.net/th?id=OIP.qS9H1msOqlDHh7gHlKubwgHaHa&pid=Api&P=0&h=180" alt="Breakfast" class="category-icon">
+                <div class="category-label">Cakes</div>
+            </a></div>
+            <div class="category-item"><a>
+                <img src="https://tse4.mm.bing.net/th?id=OIP.0nLjTXeTcJVfMcgE08u_LwHaE8&pid=Api&P=0&h=180" alt="Breakfast" class="category-icon">
+                <div class="category-label">Coffee</div>
+            </a></div>
+            <div class="category-item"><a>
+                <img src="https://tse4.mm.bing.net/th?id=OIP.VU6kPg0PYyaw8161hTZIwwHaFn&pid=Api&P=0&h=180" alt="Breakfast" class="category-icon">
+                <div class="category-label">Tea</div>
+            </a></div>
+            <div class="category-item"><a>
+                <img src="https://www.rd.com/wp-content/uploads/2016/03/aol-food-perfect-sandwich-ft.jpg" alt="Breakfast" class="category-icon">
+                <div class="category-label">Sandwich</div>
+            </a></div>
+            <div class="category-item"><a>
+                <img src="https://www.shutterstock.com/image-photo/chole-bhature-indian-dish-spicy-260nw-1133160290.jpg" alt="Breakfast" class="category-icon">
+                <div class="category-label">North Indian</div>
+            </a></div>
+            <div class="category-item"><a>
+                <img src="https://tse3.mm.bing.net/th?id=OIP.ZUNwuSXgPZGQIceYpaAbDwHaHa&pid=Api&P=0&h=180" alt="Breakfast" class="category-icon">
+                <div class="category-label">Burger</div>
+            </a></div>
+            <div class="category-item"><a>
+                <img src="https://tse1.mm.bing.net/th?id=OIP.rPNcC5AUv3cRllBnU-2HwAHaJ4&pid=Api&P=0&h=180" alt="Breakfast" class="category-icon">
+                <div class="category-label">IceCream</div>
+            </a></div>
+            <div class="category-item"><a>
+                <img src="https://tse3.mm.bing.net/th?id=OIP.ZNHzxZ9Le--CuBNCrtcSdwHaHa&pid=Api&P=0&h=180" alt="Breakfast" class="category-icon">
+                <div class="category-label">Pizza</div>
+            </a></div>
+            <div class="category-item"><a>
+                <img src="https://tse4.mm.bing.net/th?id=OIP.cwnapBK5TsooIZCCO5v6pgHaFj&pid=Api&P=0&h=180" alt="Breakfast" class="category-icon">
+                <div class="category-label">Salad</div>
+            </a></div>
+            <div class="category-item"><a>
+                <img src="https://tse4.mm.bing.net/th?id=OIP.j4S8KPvf-LKuquGR0DxU4AHaFj&pid=Api&P=0&h=180" alt="Breakfast" class="category-icon">
+                <div class="category-label">Chinese</div>
+            </a></div>
+        </div>
+            <div class="outlet-cards">
+      {% for outlet in outlets %}
+      <div class="outlet-card">
+        <img src="{{ outlet.image_url }}" alt="{{ outlet.name }}" onerror="this.onerror=null;this.src='default_image.jpg';" />
+        
+
+        <form method="post" action="{% url 'toggle_favorite_outlet' outlet.id %}" class="favorite-form">
+          {% csrf_token %}
+          <input type="hidden" name="next" value="{{ request.path }}">
+          <button type="submit" title="Toggle Favorite">
+            {% if outlet.id in favorite_outlet_ids %}
+              <span style="color: red;">❤️</span>
+            {% else %}
+              <span style="color: gray;">🤍</span>
+            {% endif %}
+          </button>
+        </form>
+
+        <div class="outlet-card-content">
+          <h2>{{ outlet.name }}</h2>
+          <p>Location: {{ outlet.location }}</p>
+          <a href="{% url 'menu_list' outlet.id %}" class="button">View Menu</a>
+        </div>
+      </div>
+      {% empty %}
+        <p>No outlets available at the moment.</p>
+      {% endfor %}
+    </div>
+
+    <a href="{% url 'student_dashboard' %}" class="back-link">← Back to Dashboard</a>
+  </section>
+        
+</body>
+</html> 
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Our Outlets</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fff;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    .outlet-section {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .outlet-section h1 {
+      font-size: 48px;
+      font-weight: bold;
+      margin-bottom: 30px;
+    }
+
+    .outlet-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      padding: 0 20px;
+    }
+
+    .outlet-card {
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      overflow: hidden;
+      background-color: #fafafa;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s ease-in-out;
+      position: relative;
+    }
+
+    .outlet-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .outlet-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .outlet-card-content {
+      padding: 15px;
+    }
+
+    .outlet-card h2 {
+      margin: 0 0 10px;
+      font-size: 22px;
+    }
+
+    .outlet-card p {
+      color: #666;
+      font-size: 14px;
+      margin: 5px 0 15px;
+    }
+
+    .outlet-card a.button {
+      display: inline-block;
+      padding: 8px 20px;
+      background-color: green;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+
+    .outlet-card a.button:hover {
+      background-color: #4caf50;
+    }
+
+    .favorite-form {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+
+    .favorite-form button {
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 40px;
+      text-decoration: none;
+      color: #007bff;
+      font-weight: bold;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <section class="outlet-section">
+    <h1>Our Outlets</h1>
+
+    <div class="outlet-cards">
+      {% for outlet in outlets %}
+      <div class="outlet-card">
+        <img src="{{ outlet.image_url }}" alt="{{ outlet.name }}" onerror="this.onerror=null;this.src='default_image.jpg';" />
+        
+     
+        <form method="post" action="{% url 'toggle_favorite_outlet' outlet.id %}" class="favorite-form">
+          {% csrf_token %}
+          <input type="hidden" name="next" value="{{ request.path }}">
+          <button type="submit" title="Toggle Favorite">
+            {% if outlet.id in favorite_outlet_ids %}
+              <span style="color: red;">❤️</span>
+            {% else %}
+              <span style="color: gray;">🤍</span>
+            {% endif %}
+          </button>
+        </form>
+
+        <div class="outlet-card-content">
+          <h2>{{ outlet.name }}</h2>
+          <p>Location: {{ outlet.location }}</p>
+          <a href="{% url 'menu_list' outlet.id %}" class="button">View Menu</a>
+        </div>
+      </div>
+      {% empty %}
+        <p>No outlets available at the moment.</p>
+      {% endfor %}
+    </div>
+
+    <a href="{% url 'student_dashboard' %}" class="back-link">← Back to Dashboard</a>
+  </section>
+</body>
+</html> -->

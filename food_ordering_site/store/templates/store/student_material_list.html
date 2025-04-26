@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Materials in {{ material_type.name }}</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f6f8;
+      padding: 30px;
+      color: #333;
+    }
+
+    h1 {
+      color: #2c3e50;
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    li {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    h4 {
+      margin-top: 0;
+      color: #34495e;
+    }
+
+    img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin: 5px 0;
+      font-size: 0.95em;
+    }
+
+    form {
+      margin-top: 10px;
+    }
+
+    label {
+      font-weight: bold;
+      margin-right: 5px;
+    }
+
+    input[type="number"] {
+      padding: 5px;
+      width: 60px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 30px;
+      background-color: #6c757d;
+      color: white;
+      text-decoration: none;
+      padding: 10px 16px;
+      border-radius: 6px;
+      transition: background-color 0.3s ease;
+    }
+
+    a:hover {
+      background-color: #5a6268;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Materials in {{ material_type.name }}</h1>
+  <ul>
+    {% for material in materials %}
+      <li>
+        <h4>{{ material.name }} - ₹{{ material.price }}</h4>
+        {% if material.image_url %}
+          <img src="{{ material.image_url }}" alt="{{ material.name }}">
+        {% endif %}
+        <p>{{ material.description }}</p>
+        <p>Quantity: {{ material.quantity }}</p>
+
+        <form action="{% url 'store_add_to_cart' material.id %}" method="POST">
+          {% csrf_token %}
+          <label>Qty:</label>
+          <input type="number" name="quantity" value="1" min="1">
+          <button type="submit">Add to Cart</button>
+        </form>
+      </li>
+    {% endfor %}
+  </ul>
+
+  <a href="{% url 'store_student_material_type_list' %}">← Back to Types</a>
+
+</body>
+</html>
